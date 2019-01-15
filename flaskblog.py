@@ -1,5 +1,8 @@
 from flask import Flask, render_template
+from forms import RegisterationForm,LoginForm
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'c9df772c99a87d2f806ffaf6f4c4ea4a'
 
 students= [
     {
@@ -28,6 +31,16 @@ def home():
 @app.route('/about')
 def about():
     return render_template('about.html',title='About')
+
+@app.route('/register')
+def register():
+    form = RegisterationForm()
+    return render_template('register.html',title='Register',form=form)
+
+@app.route('/login')
+def register():
+    form = LoginForm()
+    return render_template('login.html',title='Log In',form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)

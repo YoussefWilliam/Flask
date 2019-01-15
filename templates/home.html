@@ -1,28 +1,21 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        {%  if title  %}
-        <title>Welcome - {{ title }}</title>
-        {%  else  %}
-        <title>Welcome</title>
-        {% endif %}
-    </head>
-    <body>
-        <h1>
+
+{%  extends "layout.html "%}
+{% block content %}
+        <h4>
             This is the Students page
-        </h1>
-    </body>
-    <div>
+        </h4>
         {% for student in students %}
-            <h2>
-            FULL NAME:  {{ student.name }}
-            </h2>
-            <p>
-            AGE: {{ student.age }}
-            </p>
-            <p>
-                PROFESSION:{{ student.major }}
-            </p>
+        <article class="media content-section">
+                <div class="media-body">
+                  <div class="article-metadata">
+                   <h4> <a class="mr-2" >{{ student.name }}</a></h4>
+                      <small class="text-muted">Age: {{ student.age }}</small>
+                </div>
+            <h6><a class="article-title" >{{ student.major }}</a></h6>
+        </div>
+    </article>
         {%  endfor  %}
-    </div>
-</html>
+{% endblock %}
+
+
+    
